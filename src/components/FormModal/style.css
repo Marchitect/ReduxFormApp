@@ -44,7 +44,7 @@
 .blue{
   color:#007bff;
 }
-.blue:hover{
+.blue:hover, .blue:focus{
   text-decoration: none;
 }
 .blue .fa{
@@ -86,7 +86,10 @@ Tooltip styling */
 }
 /* Show tooltip content on hover */
 [data-tooltip]:hover:before,
-[data-tooltip]:hover:after {
+[data-tooltip]:hover:after,
+[data-tooltip]:focus:before,
+[data-tooltip]:focus:after
+{
   visibility: visible;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
   filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);

@@ -22,9 +22,11 @@ export function AddEmployeeForm() {
         }}
         validationSchema={Yup.object({
           salaryNo: Yup.string()
-            .matches(/^[a-zA-Z0-9 -]*$/, "Please enter a valid account number")
+            // no space allowed at the beginning
+            .matches(/^[a-zA-Z0-9-]+[a-zA-Z0-9 -]*$/, "Please enter a valid account number")
             .required("This field is required"),
           employeeName: Yup.string()
+            .matches(/^[a-zA-Z]+[a-zA-Z -]*$/, "Please enter a valid name")
             .max(50, "Name must be 50 characters or less")
             .required("This field is required"),
           bsb: Yup.string()
@@ -34,6 +36,7 @@ export function AddEmployeeForm() {
             )
             .required("This field is required"),
           accountNo: Yup.string()
+            // haven't achieved no space at the beginning yet
             .matches(
               /^(?=.*\d)(?=.*[1-9]).{8,12}$/,
               "Please enter a valid account number"

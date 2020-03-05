@@ -12,7 +12,7 @@ export const TextInput = ({ label, ...props }) => {
         <Form.Label htmlFor={props.id || props.name}>
           {label}
           {props.tooltip ? (
-            <a className="blue" href="#" data-tooltip="test">
+            <a tabindex="0" className="blue" href="#" data-tooltip="test">
               &nbsp;<i className="fa fa-info-circle" aria-hidden="true"></i>
             </a>
           ) : null}
