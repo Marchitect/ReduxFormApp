@@ -1,0 +1,9 @@
+.error {
+  color: red;
+}
+.text-input-error {
+  border-color: red !important;
+}
+.form-row {
+  margin-top: 15px;
+}
