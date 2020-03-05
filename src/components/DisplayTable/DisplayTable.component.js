@@ -20,7 +20,7 @@ export function DisplayTable() {
         <tbody>
           {formData.formData.map((entry, index) => (
             <tr>
-              <td>{index}</td>
+              <td>{index+1}</td>
               <td>{entry.salaryNo}</td>
               <td>{entry.employeeName}</td>
               <td>{entry.bsb}</td>
