@@ -26,7 +26,7 @@ export function FormModal(props) {
             <h3>Important information</h3>
           </div>
           <div className="floatRight">
-            <a tabindex="0" className="blue" href="#" data-tooltip="test">
+            <a tabIndex="0" className="blue" href="#" data-tooltip="test">
               <i className="fa fa-info-circle" aria-hidden="true"></i>&nbsp;Need
               help?
             </a>

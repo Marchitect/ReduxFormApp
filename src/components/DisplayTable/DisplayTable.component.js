@@ -1,10 +1,16 @@
 import React from "react"
-import { useSelector } from "react-redux"
-import { Table } from "react-bootstrap"
+import { useSelector, useDispatch } from "react-redux"
+import { DELETE_ONE_ROW } from "../../constants/action-types"
+import Table from "react-bootstrap/Table"
+import Button from "react-bootstrap/Button"
+
 import { TableContainer } from "./DisplayTable.style"
 
 export function DisplayTable() {
-  const formData = useSelector(state => state)
+  const stateData = useSelector(state => state)
+  console.log(stateData)
+  console.log(stateData.loadAndRenderData.renderList)
+  const dispatch = useDispatch()
   return (
     <TableContainer>
       <Table striped bordered hover size="sm" className="spaceAtTop">
@@ -18,9 +24,9 @@ export function DisplayTable() {
           </tr>
         </thead>
         <tbody>
-          {formData.formData.map((entry, index) => (
-            <tr>
-              <td>{index+1}</td>
+          {stateData.formData.map((entry, index) => (
+            <tr key={index}>
+              <td>{index + 1}</td>
               <td>{entry.salaryNo}</td>
               <td>{entry.employeeName}</td>
               <td>{entry.bsb}</td>
@@ -29,6 +35,13 @@ export function DisplayTable() {
           ))}
         </tbody>
       </Table>
+      {/* <ul>
+        {stateData.loadAndRenderData.map(data => {
+          data.renderList.map((entry, index) => (
+            <li key={index}>{entry.title}</li>
+          ))
+        })}
+      </ul> */}
     </TableContainer>
   )
 }
