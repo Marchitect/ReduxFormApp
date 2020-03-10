@@ -8,8 +8,7 @@ import { TableContainer } from "./DisplayTable.style"
 
 export function DisplayTable() {
   const stateData = useSelector(state => state)
-  console.log(stateData)
-  console.log(stateData.loadAndRenderData.renderList)
+  let loadedData = stateData.fetchAndLoadData[0]
   const dispatch = useDispatch()
   return (
     <TableContainer>
@@ -35,13 +34,13 @@ export function DisplayTable() {
           ))}
         </tbody>
       </Table>
-      {/* <ul>
-        {stateData.loadAndRenderData.map(data => {
-          data.renderList.map((entry, index) => (
-            <li key={index}>{entry.title}</li>
-          ))
-        })}
-      </ul> */}
+      <ul>
+        {loadedData ? (
+          loadedData.map((entry, index) => <li key={index}>{entry.title}</li>)
+        ) : (
+          <li>Waiting for data to load</li>
+        )}
+      </ul>
     </TableContainer>
   )
 }

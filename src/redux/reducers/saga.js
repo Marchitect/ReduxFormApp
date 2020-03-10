@@ -1,17 +1,15 @@
 import { RENDER_LIST } from "../../constants/action-types"
 
-const loadAndRenderData = (state = [], action) => {
+const fetchAndLoadData = (state = [], action) => {
   switch (action.type) {
     case RENDER_LIST:
       return [
         ...state,
-        {
-          renderList: action.renderList
-        }
+        action.content
       ]
     default:
       return state
   }
 }
 
-export default loadAndRenderData
+export default fetchAndLoadData
