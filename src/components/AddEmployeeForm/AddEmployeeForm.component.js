@@ -7,7 +7,6 @@ import Button from "react-bootstrap/Button"
 import { Formik, Form as FormikForm } from "formik"
 import * as Yup from "yup"
 import { TextInput } from "../TextInput"
-import "./style.css"
 
 export function AddEmployeeForm() {
   const dispatch = useDispatch()
@@ -36,9 +35,9 @@ export function AddEmployeeForm() {
             )
             .required("This field is required"),
           accountNo: Yup.string()
-            // haven't achieved no space at the beginning yet
             .matches(
-              /^(?=.*\d)(?=.*[1-9]).{8,12}$/,
+              // \S means space, ^\S means no space at the beginning
+              /^\S(?=.*\d)(?=.*[1-9]).{7,11}$/,
               "Please enter a valid account number"
             )
             .required("This field is required")

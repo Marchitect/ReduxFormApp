@@ -10,7 +10,7 @@ import "regenerator-runtime/runtime"
 export function* fetchToDoList() {
   try {
     const endpoint =
-      "https://gist.githubusercontent.com/brunokrebs/f1cacbacd53be83940e1e85860b6c65b/raw/to-do-items.json"
+      "https://gist.githubusercontent.com/Marchitect/58f8b81c32bfdf09c5fb34d689f90b95/raw/e57e7a4d9fc961fccaf5b30c803624f3e838df7d/items-list.json"
     const response = yield call(fetch, endpoint)
     if (!response.error) {
       const data = yield response.json()

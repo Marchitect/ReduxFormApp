@@ -1,14 +1,24 @@
-import * as actions from './index'
+import * as actions from "./index"
+import * as types from "../../constants/action-types"
 
-describe('saveFormData actions', () => {
-  it('saveFormData should create SAVE_FORMDATA action', () => {
-    expect(actions.saveFormData('fdse4323', 'Test Name', '012345', '12345678')).toEqual({
-      type: 'SAVE_FORMDATA',
-      id: 0,
-      salaryNo: 'fdse4323',
-      name: 'Test Name',
-      bsb: '012345',
-      accNo: '12345678'
-    })
+describe("saveFormData actions", () => {
+  it("saveFormData should create SAVE_FORMDATA action", () => {
+    const data = "test data"
+    const expectedAction = {
+      type: types.SAVE_FORMDATA,
+      data
+    }
+    expect(actions.saveFormData(data)).toEqual(expectedAction)
+  })
+})
+
+describe("loadList actions", () => {
+  it("loadList should create LOAD_LIST action", () => {
+    const data = "test data"
+    const expectedAction = {
+      type: types.LOAD_LIST,
+      data
+    }
+    expect(actions.loadList(data)).toEqual(expectedAction)
   })
 })
