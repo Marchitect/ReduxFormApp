@@ -11,82 +11,85 @@ import { TextInput } from "../TextInput"
 export function AddEmployeeForm() {
   const dispatch = useDispatch()
   return (
-    <div>
-      <Formik
-        initialValues={{
-          salaryNo: "",
-          employeeName: "",
-          bsb: "",
-          accountNo: ""
-        }}
-        validationSchema={Yup.object({
-          salaryNo: Yup.string()
-            // no space allowed at the beginning
-            .matches(/^[a-zA-Z0-9-]+[a-zA-Z0-9 -]*$/, "Please enter a valid account number")
-            .required("This field is required"),
-          employeeName: Yup.string()
-            .matches(/^[a-zA-Z]+[a-zA-Z -]*$/, "Please enter a valid name")
-            .max(50, "Name must be 50 characters or less")
-            .required("This field is required"),
-          bsb: Yup.string()
-            .matches(
-              /^(?!00)[0-9]{6}$/,
-              "Please enter a six-digit number only, BSB cannot start with 00"
-            )
-            .required("This field is required"),
-          accountNo: Yup.string()
-            .matches(
-              // \S means space, ^\S means no space at the beginning
-              /^\S(?=.*\d)(?=.*[1-9]).{7,11}$/,
-              "Please enter a valid account number"
-            )
-            .required("This field is required")
-        })}
-        // variable data (or call it values because they are values from inputs) here is linked to the reducer, formData
-        onSubmit={(data, { setSubmitting, resetForm }) => {
-          dispatch({ type: SAVE_FORMDATA, data })
-          setTimeout(() => {
-            alert("Data is successfully submitted. " + JSON.stringify(data, null, 2))
-            setSubmitting(false)
-          }, 400)
-          resetForm()
-        }}
-      >
-        <FormikForm>
-          <h3>Employee Details</h3>
-          <Form.Row>
-            <TextInput
-              label="Reference / Salary number"
-              name="salaryNo"
-              type="text"
-              placeholder="Reference or salary number"
-              tooltip="true"
-            />
-          </Form.Row>
-          <Form.Row>
-            <TextInput
-              label="Employee name"
-              name="employeeName"
-              type="text"
-              placeholder="Employee name"
-            />
-          </Form.Row>
-          <Form.Row>
-            <TextInput label="BSB" name="bsb" type="text" placeholder="BSB" />
-            <TextInput
-              label="Account number"
-              name="accountNo"
-              type="text"
-              placeholder="Account number"
-            />
-          </Form.Row>
-          <Form.Row>
-            <Col>
-              <Button type="submit">Submit</Button>
-            </Col>
-          </Form.Row>
-        </FormikForm>
-      </Formik>
-    </div>
+    <Formik
+      initialValues={{
+        salaryNo: "",
+        employeeName: "",
+        bsb: "",
+        accountNo: ""
+      }}
+      validationSchema={Yup.object({
+        salaryNo: Yup.string()
+          // no space allowed at the beginning
+          .matches(
+            /^[a-zA-Z0-9-]+[a-zA-Z0-9 -]*$/,
+            "Please enter a valid account number"
+          )
+          .required("This field is required"),
+        employeeName: Yup.string()
+          .matches(/^[a-zA-Z]+[a-zA-Z -]*$/, "Please enter a valid name")
+          .max(50, "Name must be 50 characters or less")
+          .required("This field is required"),
+        bsb: Yup.string()
+          .matches(
+            /^(?!00)[0-9]{6}$/,
+            "Please enter a six-digit number only, BSB cannot start with 00"
+          )
+          .required("This field is required"),
+        accountNo: Yup.string()
+          .matches(
+            // \S means space, ^\S means no space at the beginning
+            /^\S(?=.*\d)(?=.*[1-9]).{7,11}$/,
+            "Please enter a valid account number"
+          )
+          .required("This field is required")
+      })}
+      // variable data (or call it values because they are values from inputs) here is linked to the reducer, formData
+      onSubmit={(data, { setSubmitting, resetForm }) => {
+        dispatch({ type: SAVE_FORMDATA, data })
+        setTimeout(() => {
+          alert(
+            "Data is successfully submitted. " + JSON.stringify(data, null, 2)
+          )
+          setSubmitting(false)
+        }, 400)
+        resetForm()
+      }}
+    >
+      <FormikForm>
+        <h3>Employee Details</h3>
+        <Form.Row>
+          <TextInput
+            label="Reference / Salary number"
+            name="salaryNo"
+            type="text"
+            placeholder="Reference or salary number"
+            tooltip="true"
+          />
+        </Form.Row>
+        <Form.Row>
+          <TextInput
+            label="Employee name"
+            name="employeeName"
+            type="text"
+            placeholder="Employee name"
+          />
+        </Form.Row>
+        <Form.Row>
+          <TextInput label="BSB" name="bsb" type="text" placeholder="BSB" />
+          <TextInput
+            label="Account number"
+            name="accountNo"
+            type="text"
+            placeholder="Account number"
+          />
+        </Form.Row>
+        <Form.Row>
+          <Col>
+            <Button type="submit">Submit</Button>
+          </Col>
+        </Form.Row>
+      </FormikForm>
+    </Formik>
   )
 }

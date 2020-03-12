@@ -25,14 +25,6 @@ describe("TextInput component", () => {
   it("TextInput renders correctly", () => {
     const { enzymeWrapper } = setup()
     expect(enzymeWrapper.find("a").hasClass("blue")).toBe(true)
-    // const textInput = render(
-    //     <TextInput
-    //       label="Test label"
-    //       type="text"
-    //       tooltip="true"
-    //     >
-    //     </TextInput>
-    //   )
-    // expect(textInput).toMatchSnapshot()
+    expect(enzymeWrapper).toMatchSnapshot()
   })
 })

@@ -1,15 +1,11 @@
 import React from "react"
-import { useSelector, useDispatch } from "react-redux"
+import { useSelector } from "react-redux"
 import Table from "react-bootstrap/Table"
-import Button from "react-bootstrap/Button"
-
 import { TableContainer } from "./DisplayTable.style"
 
 export function DisplayTable() {
   const stateData = useSelector(state => state)
   let loadedData = stateData.fetchAndLoadData[0]
-  console.log(loadedData)
-  const dispatch = useDispatch()
   return (
     <TableContainer>
       <Table striped bordered hover size="sm" className="spaceAtTop">
