@@ -1,5 +1,5 @@
 import React from "react"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { SAVE_FORMDATA } from "../../constants/action-types"
 import Form from "react-bootstrap/Form"
 import Col from "react-bootstrap/Col"
@@ -10,6 +10,9 @@ import { TextInput } from "../TextInput"
 
 export function AddEmployeeForm() {
   const dispatch = useDispatch()
+  // make sure the same salary number is not allowed to be added repeatedly
+  const stateData = useSelector(state => state)
+  let salaryNoArray = []
   return (
     <Formik
       initialValues={{
@@ -38,21 +41,29 @@ export function AddEmployeeForm() {
           .required("This field is required"),
         accountNo: Yup.string()
           .matches(
-            // \S means space, ^\S means no space at the beginning
-            /^\S(?=.*\d)(?=.*[1-9]).{7,11}$/,
+            // \S means space, ^\S means no space at the beginning, \S near the end means no spaces anywhere
+            /^\S(?=.*\d)(?=.*[1-9]).\S{6,10}$/,
             "Please enter a valid account number"
           )
           .required("This field is required")
       })}
       // variable data (or call it values because they are values from inputs) here is linked to the reducer, formData
       onSubmit={(data, { setSubmitting, resetForm }) => {
-        dispatch({ type: SAVE_FORMDATA, data })
-        setTimeout(() => {
-          alert(
-            "Data is successfully submitted. " + JSON.stringify(data, null, 2)
-          )
-          setSubmitting(false)
-        }, 400)
+        stateData.formData.map((entry) => (
+          salaryNoArray.push(entry.salaryNo)
+        ))
+        if (!salaryNoArray.includes(data.salaryNo)){
+          dispatch({ type: SAVE_FORMDATA, data })   
+          setTimeout(() => {
+            alert(
+              "Data is successfully submitted. " + JSON.stringify(data, null, 2)
+            )
+            setSubmitting(false)
+          }, 400)
+        }
+        else {
+          alert("Salary number cannot be repetitive.")
+        }
         resetForm()
       }}
     >

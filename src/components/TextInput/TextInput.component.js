@@ -25,7 +25,7 @@ export const TextInput = ({ label, ...props }) => {
           {...props}
         />
         {meta.touched && meta.error ? (
-          <div className="error">{meta.error}</div>
+          <div tabIndex="0" className="error">{meta.error}</div>
         ) : null}
       </Col>
     </>

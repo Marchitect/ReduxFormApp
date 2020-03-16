@@ -13,6 +13,7 @@ h3{
 @media only screen and (max-width: 425px) {
   .modal-90w {
     min-width: 100%;
+    margin: 0px;
   }
 }
 @media only screen and (max-width: 600px) {
@@ -33,11 +34,13 @@ h3{
 @media only screen and (min-width: 1025px) and (max-width: 1440px) {
   .modal-90w {
     min-width: 90%;
+
   }
 }
-@media only screen and (min-width: 1441px) {
+@media only screen and (min-width: 1441px) and (max-width: 4000px) {
   .modal-90w {
     min-width: 90%;
+    align-items: start;
   }
 }
 .row-100w{

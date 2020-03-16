@@ -8,7 +8,7 @@ export function DisplayTable() {
   let loadedData = stateData.fetchAndLoadData[0]
   return (
     <TableContainer>
-      <Table striped bordered hover size="sm" className="spaceAtTop">
+      <Table striped bordered hover size="sm" className="spaceAtTop" tabIndex="0">
         <thead>
           <tr>
             <th>#</th>

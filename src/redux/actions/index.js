@@ -1,4 +1,4 @@
-import { SAVE_FORMDATA, LOAD_LIST } from "../../constants/action-types"
+import { SAVE_FORMDATA, DELETE_FORMDATA, LOAD_LIST } from "../../constants/action-types"
 
 export const saveFormData = (data) => ({
   type: SAVE_FORMDATA,
@@ -11,3 +11,8 @@ export function loadList(data) {
     data
   }
 }
+
+export const deleteFormData = (key) => ({
+  type: DELETE_FORMDATA,
+  data
+})

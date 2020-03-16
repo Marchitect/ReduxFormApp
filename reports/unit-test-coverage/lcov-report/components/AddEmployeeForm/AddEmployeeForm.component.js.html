@@ -146,7 +146,12 @@
 <a name='L88'></a><a href='#L88'>88</a>
 <a name='L89'></a><a href='#L89'>89</a>
 <a name='L90'></a><a href='#L90'>90</a>
-<a name='L91'></a><a href='#L91'>91</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L91'></a><a href='#L91'>91</a>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a>
+<a name='L94'></a><a href='#L94'>94</a>
+<a name='L95'></a><a href='#L95'>95</a>
+<a name='L96'></a><a href='#L96'>96</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -191,9 +196,14 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -249,81 +259,86 @@ import { TextInput } from "../TextInput"
 export function AddEmployeeForm() {
   const dispatch = useDispatch()
   return (
-      &lt;Formik
-        initialValues={{
-          salaryNo: "",
-          employeeName: "",
-          bsb: "",
-          accountNo: ""
-        }}
-        validationSchema={Yup.object({
-          salaryNo: Yup.string()
-            // no space allowed at the beginning
-            .matches(/^[a-zA-Z0-9-]+[a-zA-Z0-9 -]*$/, "Please enter a valid account number")
-            .required("This field is required"),
-          employeeName: Yup.string()
-            .matches(/^[a-zA-Z]+[a-zA-Z -]*$/, "Please enter a valid name")
-            .max(50, "Name must be 50 characters or less")
-            .required("This field is required"),
-          bsb: Yup.string()
-            .matches(
-              /^(?!00)[0-9]{6}$/,
-              "Please enter a six-digit number only, BSB cannot start with 00"
-            )
-            .required("This field is required"),
-          accountNo: Yup.string()
-            .matches(
-              // \S means space, ^\S means no space at the beginning
-              /^\S(?=.*\d)(?=.*[1-9]).{7,11}$/,
-              "Please enter a valid account number"
-            )
-            .required("This field is required")
-        })}
-        // variable data (or call it values because they are values from inputs) here is linked to the reducer, formData
-        onSubmit={<span class="fstat-no" title="function not covered" >(d</span>ata, { setSubmitting, resetForm }) =&gt; {
-<span class="cstat-no" title="statement not covered" >          dispatch({ type: SAVE_FORMDATA, data })</span>
-<span class="cstat-no" title="statement not covered" >          setTimeout(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >            alert("Data is successfully submitted. " + JSON.stringify(data, null, 2))</span>
-<span class="cstat-no" title="statement not covered" >            setSubmitting(false)</span>
-          }, 400)
-<span class="cstat-no" title="statement not covered" >          resetForm()</span>
-        }}
-      &gt;
-        &lt;FormikForm&gt;
-          &lt;h3&gt;Employee Details&lt;/h3&gt;
-          &lt;Form.Row&gt;
-            &lt;TextInput
-              label="Reference / Salary number"
-              name="salaryNo"
-              type="text"
-              placeholder="Reference or salary number"
-              tooltip="true"
-            /&gt;
-          &lt;/Form.Row&gt;
-          &lt;Form.Row&gt;
-            &lt;TextInput
-              label="Employee name"
-              name="employeeName"
-              type="text"
-              placeholder="Employee name"
-            /&gt;
-          &lt;/Form.Row&gt;
-          &lt;Form.Row&gt;
-            &lt;TextInput label="BSB" name="bsb" type="text" placeholder="BSB" /&gt;
-            &lt;TextInput
-              label="Account number"
-              name="accountNo"
-              type="text"
-              placeholder="Account number"
-            /&gt;
-          &lt;/Form.Row&gt;
-          &lt;Form.Row&gt;
-            &lt;Col&gt;
-              &lt;Button type="submit"&gt;Submit&lt;/Button&gt;
-            &lt;/Col&gt;
-          &lt;/Form.Row&gt;
-        &lt;/FormikForm&gt;
-      &lt;/Formik&gt;
+    &lt;Formik
+      initialValues={{
+        salaryNo: "",
+        employeeName: "",
+        bsb: "",
+        accountNo: ""
+      }}
+      validationSchema={Yup.object({
+        salaryNo: Yup.string()
+          // no space allowed at the beginning
+          .matches(
+            /^[a-zA-Z0-9-]+[a-zA-Z0-9 -]*$/,
+            "Please enter a valid account number"
+          )
+          .required("This field is required"),
+        employeeName: Yup.string()
+          .matches(/^[a-zA-Z]+[a-zA-Z -]*$/, "Please enter a valid name")
+          .max(50, "Name must be 50 characters or less")
+          .required("This field is required"),
+        bsb: Yup.string()
+          .matches(
+            /^(?!00)[0-9]{6}$/,
+            "Please enter a six-digit number only, BSB cannot start with 00"
+          )
+          .required("This field is required"),
+        accountNo: Yup.string()
+          .matches(
+            // \S means space, ^\S means no space at the beginning
+            /^\S(?=.*\d)(?=.*[1-9]).{7,11}$/,
+            "Please enter a valid account number"
+          )
+          .required("This field is required")
+      })}
+      // variable data (or call it values because they are values from inputs) here is linked to the reducer, formData
+      onSubmit={<span class="fstat-no" title="function not covered" >(d</span>ata, { setSubmitting, resetForm }) =&gt; {
+<span class="cstat-no" title="statement not covered" >        dispatch({ type: SAVE_FORMDATA, data })</span>
+<span class="cstat-no" title="statement not covered" >        setTimeout(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >          alert(</span>
+            "Data is successfully submitted. " + JSON.stringify(data, null, 2)
+          )
+<span class="cstat-no" title="statement not covered" >          setSubmitting(false)</span>
+        }, 400)
+<span class="cstat-no" title="statement not covered" >        resetForm()</span>
+      }}
+    &gt;
+      &lt;FormikForm&gt;
+        &lt;h3&gt;Employee Details&lt;/h3&gt;
+        &lt;Form.Row&gt;
+          &lt;TextInput
+            label="Reference / Salary number"
+            name="salaryNo"
+            type="text"
+            placeholder="Reference or salary number"
+            tooltip="true"
+          /&gt;
+        &lt;/Form.Row&gt;
+        &lt;Form.Row&gt;
+          &lt;TextInput
+            label="Employee name"
+            name="employeeName"
+            type="text"
+            placeholder="Employee name"
+          /&gt;
+        &lt;/Form.Row&gt;
+        &lt;Form.Row&gt;
+          &lt;TextInput label="BSB" name="bsb" type="text" placeholder="BSB" /&gt;
+          &lt;TextInput
+            label="Account number"
+            name="accountNo"
+            type="text"
+            placeholder="Account number"
+          /&gt;
+        &lt;/Form.Row&gt;
+        &lt;Form.Row&gt;
+          &lt;Col&gt;
+            &lt;Button type="submit"&gt;Submit&lt;/Button&gt;
+          &lt;/Col&gt;
+        &lt;/Form.Row&gt;
+      &lt;/FormikForm&gt;
+    &lt;/Formik&gt;
   )
 }
 &nbsp;</pre></td></tr></table></pre>
@@ -333,7 +348,7 @@ export function AddEmployeeForm() {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Thu Mar 12 2020 16:19:24 GMT+1100 (Australian Eastern Daylight Time)
+                at Mon Mar 16 2020 10:53:20 GMT+1100 (Australian Eastern Daylight Time)
             </div>
         </div>
         <script src="../../prettify.js"></script>
