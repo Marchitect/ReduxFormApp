@@ -53,6 +53,7 @@ export function AddEmployeeForm() {
           salaryNoArray.push(entry.salaryNo)
         ))
         if (!salaryNoArray.includes(data.salaryNo)){
+          // the variable "data" here needs to be kept with the same name in reducers
           dispatch({ type: SAVE_FORMDATA, data })   
           setTimeout(() => {
             alert(

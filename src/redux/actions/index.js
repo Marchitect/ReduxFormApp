@@ -12,7 +12,7 @@ export function loadList(data) {
   }
 }
 
-export const deleteFormData = (key) => ({
+export const deleteFormData = (id) => ({
   type: DELETE_FORMDATA,
-  data
+  id
 })
