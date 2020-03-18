@@ -22,3 +22,14 @@ describe("loadList actions", () => {
     expect(actions.loadList(data)).toEqual(expectedAction)
   })
 })
+
+describe("deleteFormData actions", () => {
+  it("loadList should create DELETE_FORMDATA action", () => {
+    const id = "test data"
+    const expectedAction = {
+      type: types.DELETE_FORMDATA,
+      id
+    }
+    expect(actions.deleteFormData(id)).toEqual(expectedAction)
+  })
+})
